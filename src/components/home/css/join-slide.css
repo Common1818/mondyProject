@@ -1,0 +1,115 @@
+/* Stats container */
+
+.stat-numbers {
+    position: relative;
+    display: flex;
+    text-align: center;
+    padding: 20px;
+    padding-top: 15vh;
+}
+
+
+/* Join slide container jisme map hai */
+
+.join-slide {
+    min-height: 80vh;
+    background-image: url("https://drive.google.com/uc?export=view&id=1BgZUK_OzkYnCIiHRYbFLAK-m2z48o5M8");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #F4F8FF;
+    background-blend-mode: multiply;
+}
+
+
+/* ----------------------- */
+
+.stat-numbers h2 {
+    color: #ffbf00;
+    text-shadow: 2px 2px black;
+    text-shadow: 1px 1px 1px #111;
+    font-weight: 900;
+    font-family: Poppins;
+}
+
+.stat-numbers h3 {
+    font-family: 'Dosis', sans-serif;
+    text-shadow: 1px 1px 1px #ffbf00;
+    font-size: 3rem;
+}
+
+.join-btn {
+    background: transparent;
+    border: 2px solid black;
+    font-weight: 700;
+    color: black;
+}
+
+
+/* ------------- */
+
+
+/* Stat numbers */
+
+.number {
+    padding: 20px;
+    font-size: 3em;
+}
+
+
+/* ---------------- */
+
+
+/* Edit numbers button container */
+
+.Edit-numbers {
+    padding-top: 10vh;
+    text-align: center;
+}
+
+
+/* -------------------- */
+
+
+/* button styles */
+
+.join-btn {
+    margin: 10px;
+}
+
+
+/* ----------------- */
+
+
+/* Media tag to alter the font size on mobile devices */
+
+@media only screen and (max-width: 600px) {
+    .stat-numbers {
+        font-size: 0.8rem;
+        top: 10vh;
+    }
+    .Edit-numbers {
+        top: 10vh;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .stat-numbers {
+        padding-top: 0;
+    }
+    .Edit-numbers {
+        padding-top: 0;
+    }
+}
+
+@media only screen and (max-width: 605px) {
+    .stat-numbers {
+        padding-top: 0;
+    }
+    .Edit-numbers {
+        padding-top: 60px;
+    }
+}
+
+
+/* ----------------------------------------------------- */

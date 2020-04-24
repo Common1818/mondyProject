@@ -1,0 +1,22 @@
+/* Container */
+
+.usp-container {
+    min-height: 70vh;
+    width: 100vw;
+    background-color: #f7f0ea;
+}
+
+
+/* ----------- */
+
+
+/* svg icon */
+
+.usp-icon {
+    padding-top: 0;
+    padding: 20px;
+    margin: 0;
+}
+
+
+/* ---------------- */

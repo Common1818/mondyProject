@@ -1,0 +1,10 @@
+.video-thumbnail {
+    height: 200px;
+    font-size: 2rem;
+    word-wrap: normal;
+}
+
+.edit-home-vid-content {
+    height: 100px;
+    margin: 10px;
+}

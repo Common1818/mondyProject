@@ -1,0 +1,125 @@
+.blog-article-container {
+    min-height: 100vh;
+}
+
+.up-del-buttons {
+    text-align: center;
+    margin: 30px;
+}
+
+.update-button {
+    margin: 10px;
+}
+
+.delete-button {
+    margin: 10px;
+}
+
+
+/* =---------------- */
+
+.full-view-article {
+    background-color: #fff;
+    border-top: 1px solid green;
+}
+
+.selected-article {
+    min-height: 100vh;
+}
+
+.share-icons {
+    position: fixed;
+    z-index: 1000;
+    left: 30px;
+    top: 50vh;
+    transform: scale(1.2);
+}
+
+.thumbnail-article-image {
+    width: 100%;
+    height: 50vh;
+    border-radius: 5px;
+}
+
+
+/* go to top icon */
+
+.top-icon {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    z-index: 1000;
+    font-size: 2rem;
+    color: #241e4e;
+    transition: all 0.2s linear;
+}
+
+.top-icon:hover {
+    transform: scale(1.3);
+    animation-duration: 0.2s;
+}
+
+
+/* ------------------------------------------------------------------------- */
+
+
+/* whatsapp icon */
+
+.whatsapp-icon {
+    background-color: #25d366;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    opacity: 0.8;
+    transition: 0.2s ease-out;
+}
+
+.whatsapp-icon:hover {
+    opacity: 1;
+    color: white;
+}
+
+
+/* ------------------------------------------------------------------------- */
+
+
+/* copy link to clipboard icon */
+
+.link-icon {
+    background: #dd4b39;
+    transition: 0.2s ease-out;
+    padding: 5px;
+    border-radius: 50%;
+    opacity: 0.8;
+    text-align: center;
+    color: white;
+}
+
+.link-icon:hover {
+    color: white;
+    opacity: 1;
+}
+
+
+/* =--------------------------------------------------------------------------- */
+
+
+/* share via mail icon */
+
+.mail-icon {
+    background-color: #55acee;
+    text-align: center;
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+    opacity: 0.8;
+    transition: 0.2s ease-out;
+}
+
+.mail-icon:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+
+/* ---------------------------------------------------------------------------------------- */

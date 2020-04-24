@@ -1,0 +1,12 @@
+.accordian-toggle {
+    background-color: none;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+}
+
+.accordian-toggle:active,
+.accordian-toggle:focus {
+    border: none;
+    outline: none;
+}

@@ -1,0 +1,67 @@
+/* Container */
+
+.usp-heading h1 {
+    font-family: 'Dosis', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.usp-container {
+    min-height: 80vh !important;
+    width: 100vw;
+    background-color: #f5f5f5 !important;
+}
+
+
+/* ----------- */
+
+
+/* heading for usp */
+
+.usp-heading {
+    padding: 5vh;
+    display: block;
+    text-align: center;
+}
+
+
+/* ------------- */
+
+
+/* svg icon */
+
+.usp {
+    text-align: center;
+}
+
+.usp div {
+    font-family: 'Dosis', sans-serif;
+    color: #ffbf00;
+    font-size: 1.2rem;
+}
+
+.usp h2 {
+    color: black;
+    font-family: 'Dosis', sans-serif;
+}
+
+.usp-icon {
+    padding-top: 0;
+    padding: 20px;
+    margin: 0;
+}
+
+
+/* ------------- */
+
+
+/* Caption for icon */
+
+.usp-text {
+    display: block;
+    text-align: center;
+    padding: 0 10px 10px 20px;
+}
+
+
+/* ---------------- */
