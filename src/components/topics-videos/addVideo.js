@@ -4,7 +4,6 @@ import { addCourseVideo } from "../crudFunctions/coursesFunctions";
 import { CourseContext } from "../../contexts/courseContext";
 
 const AddVideo = (props) => {
-  console.log(props);
   const { dispatch } = useContext(CourseContext);
 
   const courseId = props.courseId;
@@ -18,7 +17,6 @@ const AddVideo = (props) => {
   const handleShowAddVideo = () => setShow(true);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ videoName, videoDescription, videoUrl });
 
     addCourseVideo(
       courseId,
@@ -56,7 +54,6 @@ const AddVideo = (props) => {
 
       <Modal
         centered
-        animation
         show={show}
         onHide={handleClose}
         animation={true}

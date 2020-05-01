@@ -4,10 +4,10 @@ import { Form, Button } from "react-bootstrap";
 import { addArticleFunction } from "../../crudFunctions/blogFunctions";
 import { BlogContext } from "../../../contexts/blogContext";
 import Editor from "../../editor/editor";
-import { AdminContext } from "../../../contexts/adminContext";
+import { AuthContext } from "../../../contexts/authContext";
 
 const AddArticle = () => {
-  const { adminData } = useContext(AdminContext);
+  const { isAdmin } = useContext(AuthContext);
   const [heading, setHeading] = useState("");
   const [content, setContent] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -38,7 +38,7 @@ const AddArticle = () => {
 
   return (
     <div>
-      {adminData.isAdmin ? (
+      {isAdmin ? (
         <div className="addArticle-container bg-light">
           <div className="container ">
             <Form onSubmit={handleSubmit}>
@@ -54,10 +54,10 @@ const AddArticle = () => {
 
               <Form.Check
                 onChange={(e) => {
-                  if (featured == false) {
+                  if (featured === false) {
                     setFeatured(true);
                   }
-                  if (featured == true) {
+                  if (featured === true) {
                     setFeatured(false);
                   }
                 }}

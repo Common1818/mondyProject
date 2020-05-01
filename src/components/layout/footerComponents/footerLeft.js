@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 const FooterLeft = () => {
   return (
     <div className="footer-left">
-      <h3>
+      <h3 style={{ fontFamily: "Dosis" }}>
         Marketing
-        <span> Acad</span>
+        <span style={{ fontFamily: "Dosis" }}> Acad</span>
         <span>
           {" "}
           <img

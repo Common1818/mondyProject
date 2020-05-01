@@ -16,12 +16,9 @@ const EditTopCarousel = ({ content }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     EditTopCarouselFunction({ HomeCarouselUrl }, dispatch);
-    console.log(HomeCarouselUrl);
   };
 
   const data = content && content[0].HomeCarouselUrl;
-
-  console.log(data);
 
   return (
     <div className="container bg-light p-3">

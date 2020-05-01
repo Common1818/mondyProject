@@ -3,7 +3,7 @@ import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import "./css/editCourseCard.css";
 import { CourseContext } from "../../../contexts/courseContext";
 import { updateCourseFunction } from "../../crudFunctions/coursesFunctions";
-import { AdminContext } from "../../../contexts/adminContext";
+import { AuthContext } from "../../../contexts/authContext";
 
 const EditCourseCard = (props) => {
   const courseId = props.match.params.id;
@@ -19,17 +19,11 @@ const EditCourseCard = (props) => {
       if (course.id === courseId) {
         currentCourse = course;
       }
+      return null;
     });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log({
-      imageUrl,
-      courseName,
-      courseDuration,
-      noOfModules,
-    });
 
     updateCourseFunction(
       {
@@ -53,11 +47,11 @@ const EditCourseCard = (props) => {
   } else {
     status = null;
   }
-  const { adminData } = useContext(AdminContext);
+  const { isAdmin } = useContext(AuthContext);
 
   return (
     <div className="add-card-container">
-      {adminData.isAdmin ? (
+      {isAdmin ? (
         <Form onSubmit={handleSubmit}>
           <Card className="add-card">
             <Card.Header className="" as="h2">

@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { AdminContext } from "../../contexts/adminContext";
 
 const firebase = require("firebase");
 require("firebase/functions");

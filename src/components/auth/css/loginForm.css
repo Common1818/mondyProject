@@ -129,3 +129,15 @@
     width: 35px;
     padding-left: 10px;
 }
+
+@media only screen and (max-width: 342px) {
+    .login-form-container .fields {
+        width: 100%;
+        padding: 0px 0px 0px 0px;
+    }
+    .login-div {
+        width: 430px;
+        min-height: 700px;
+        padding: 10px 5px 5px 5px;
+    }
+}

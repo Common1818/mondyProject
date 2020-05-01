@@ -6,7 +6,7 @@ const FeaturedArticles = ({ content }) => {
     <div>
       {content &&
         content.map((data) => {
-          if (data && data.featured == true) {
+          if (data && data.featured === true) {
             const ArticleId = data && data.id;
             return (
               <div className="grid__item-sm" key={data && data.id}>
@@ -27,6 +27,7 @@ const FeaturedArticles = ({ content }) => {
                   <div>
                     <img
                       src={data && data.thumbnail}
+                      alt=""
                       className="grid__item__img"
                     />
                   </div>
@@ -34,6 +35,7 @@ const FeaturedArticles = ({ content }) => {
               </div>
             );
           }
+          return null;
         })}
     </div>
   );

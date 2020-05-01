@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useContext } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import { FooterContext } from "../../../contexts/footerContext";
@@ -14,7 +15,7 @@ const EditFooterAddress = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ firstLine, secondLine });
+
     updateFooterFunction(
       { firstLine, secondLine },
       dispatch,

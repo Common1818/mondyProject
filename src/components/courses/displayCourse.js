@@ -1,18 +1,22 @@
 import React, { useContext } from "react";
 import "./css/allCourses.css";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { CardDeck, Button, Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import $ from "jquery";
 import { deleteCourseFunction } from "../crudFunctions/coursesFunctions";
 import { CourseContext } from "../../contexts/courseContext";
-import { AdminContext } from "../../contexts/adminContext";
+import { AuthContext } from "../../contexts/authContext";
 
 const _displayCourse = ({ course }) => {
   const width = window.innerWidth;
-  const { adminData } = useContext(AdminContext);
-
   const { dispatch } = useContext(CourseContext);
+  const { authState, isAdmin } = useContext(AuthContext);
+  var loginCode;
+  if (authState !== null) {
+    loginCode = 200;
+  } else {
+    loginCode = 100;
+  }
 
   const courseId = course.id;
 
@@ -31,7 +35,7 @@ const _displayCourse = ({ course }) => {
               <b>{course.courseName}</b>
             </h3>
           </Card.Title>
-          <Card.Text>
+          <Card.Text as="div">
             <div className="course-card-icons">
               <div className="modules">
                 <i className="far card-icon fa-list-alt">
@@ -46,13 +50,21 @@ const _displayCourse = ({ course }) => {
                   placement="top"
                   overlay={
                     <Tooltip id="tooltip-top">
-                      <strong>Start Course...!!!</strong>.
+                      {loginCode !== 200 ? (
+                        <strong className="text-danger">Login to View!!</strong>
+                      ) : (
+                        <strong>Start Course...!!!</strong>
+                      )}
                     </Tooltip>
                   }
                 >
-                  <NavLink to={"/courses/topics/" + course.id}>
-                    <i className="fas start-course-icon fa-caret-right"></i>
-                  </NavLink>
+                  {loginCode !== 200 ? (
+                    <strong className="text-danger">Login to View!!</strong>
+                  ) : (
+                    <NavLink to={"/courses/topics/" + course.id}>
+                      <i className="fas start-course-icon fa-caret-right"></i>
+                    </NavLink>
+                  )}
                 </OverlayTrigger>
               </div>
               <div className="clock">
@@ -67,24 +79,26 @@ const _displayCourse = ({ course }) => {
         </Card.Body>
         <Card.Footer>
           <small className="course-card-footer text-muted">
-            A Course By Mondy Company &copy; &reg;
+            A Course By{" "}
+            <span style={{ fontFamily: "Dosis" }}>Marketing Acad</span> &copy;
+            &reg;
           </small>
-          {adminData.isAdmin ? (
+          {isAdmin ? (
             <div className=" edit-course-card ">
-              <button onClick={handleDelete} class=" centerMe">
-                <div class="icon">
-                  <i class="fa fa-trash-o"></i>
+              <button onClick={handleDelete} className="centerMe">
+                <div className="icon">
+                  <i className="fa fa-trash-o"></i>
                 </div>
-                <div class="text">
+                <div className="text">
                   <span>DELETE</span>
                 </div>
               </button>
-              <NavLink to={"/course/" + courseId + "/edit"}>
-                <button class=" centerMe">
-                  <div class="icon">
-                    <i class="fa fa-edit"></i>
+              <NavLink to={"/course/" + courseId + "/edit"} rel="nofollow">
+                <button className=" centerMe">
+                  <div className="icon">
+                    <i className="fa fa-edit"></i>
                   </div>
-                  <div class="text">
+                  <div className="text">
                     <span>EDIT</span>
                   </div>
                 </button>
@@ -121,13 +135,21 @@ const _displayCourse = ({ course }) => {
                   placement="top"
                   overlay={
                     <Tooltip id="tooltip-top">
-                      <strong>Start Course...!!!</strong>.
+                      {loginCode !== 200 ? (
+                        <strong>Login to start This Course!!</strong>
+                      ) : (
+                        <strong>Start Course...!!!</strong>
+                      )}
                     </Tooltip>
                   }
                 >
-                  <NavLink to={"/courses/topics/" + course.id}>
-                    <i className="fas start-course-icon fa-caret-right"></i>
-                  </NavLink>
+                  {loginCode !== 200 ? (
+                    <strong className="text-danger">Login to View!!</strong>
+                  ) : (
+                    <NavLink to={"/courses/topics/" + course.id}>
+                      <i className="fas start-course-icon fa-caret-right"></i>
+                    </NavLink>
+                  )}
                 </OverlayTrigger>
               </div>
               <div className="clock">
@@ -142,9 +164,11 @@ const _displayCourse = ({ course }) => {
         </Card.Body>
         <Card.Footer>
           <small className="course-card-footer text-muted">
-            A Course By Mondy Company &copy; &reg;
+            A Course By{" "}
+            <span style={{ fontFamily: "Dosis" }}>Marketing Acad</span> &copy;
+            &reg;
           </small>
-          {adminData.isAdmin ? (
+          {isAdmin ? (
             <div className=" edit-course-card ">
               <button onClick={handleDelete} className=" centerMe">
                 <div className="icon">
@@ -154,7 +178,7 @@ const _displayCourse = ({ course }) => {
                   <span>DELETE</span>
                 </div>
               </button>
-              <NavLink to={"/course/" + courseId + "/edit"}>
+              <NavLink to={"/course/" + courseId + "/edit"} rel="nofollow">
                 <button className=" centerMe">
                   <div className="icon">
                     <i className="fa fa-edit"></i>

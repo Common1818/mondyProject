@@ -7,19 +7,40 @@ const FooterIcons = () => {
         target="__blank"
         href="https://www.facebook.com/pg/Marketing-Acad-110876703921196/about/"
       >
-        <i className="fa fa-facebook "></i>
+        <img
+          src="https://www.svgrepo.com/show/111202/facebook.svg"
+          alt="facebook"
+        />
       </a>
-      <a href="#">
-        <i className="fa fa-twitter"></i>
+      <a
+        href="https://www.youtube.com/channel/UC0IJk02xGCq42EYE0DC-7xQ?view_as=subscriber"
+        target="__blank"
+      >
+        <img
+          src="https://www.svgrepo.com/show/95009/youtube.svg"
+          alt="Youtube "
+        />
       </a>
-      <a href="#">
-        <i className="fa fa-linkedin"></i>
+      <a target="__blank" href="https://twitter.com/MarketingAcad_">
+        <img
+          src="https://www.svgrepo.com/show/13677/twitter.svg"
+          alt="twitter"
+        />
       </a>
       <a
         href="https://instagram.com/marketingacad_?igshid=1f5gnbr1d5eg7"
         target="__blank"
       >
-        <i className="fa fa-instagram"></i>
+        <img
+          src="https://www.svgrepo.com/show/28697/instagram.svg"
+          alt="instagram"
+        />
+      </a>
+      <a target="__blank" href="https://www.linkedin.com/company/marketingacad">
+        <img
+          src="https://www.svgrepo.com/show/54425/linkedin.svg"
+          alt="LinkedIn"
+        />
       </a>
     </div>
   );

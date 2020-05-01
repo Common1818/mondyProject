@@ -11,11 +11,10 @@ const AddTopic = (props) => {
   const { dispatch } = useContext(CourseContext);
 
   const courseId = props.id;
-  console.log(courseId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ topicName });
+
     addCourseTopic(courseId, { topicName }, dispatch);
   };
 
@@ -41,7 +40,6 @@ const AddTopic = (props) => {
 
       <Modal
         centered
-        animation
         show={show}
         onHide={handleClose}
         animation={true}

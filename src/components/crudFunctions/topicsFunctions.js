@@ -1,17 +1,19 @@
-import firebase from '../../config/fbConfig';
+import firebase from "../../config/fbConfig";
 
-export const getTopics = async (dispatch)=>{
+export const getTopics = async (dispatch) => {
+  const topicsArray = [];
+  const topicsArraySnpshot = await firebase
+    .firestore()
+    .collection("Topics")
+    .get();
 
-    const topicsArray = [];
-    const topicsArraySnpshot = await firebase.firestore().collection('Topics').get()
+  topicsArraySnpshot.docs.map((doc) => {
+    topicsArray.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+    return null;
+  });
 
-    topicsArraySnpshot.docs.map(doc=>{
-        topicsArray.push({
-            id: doc.id,
-            ...(doc.data())
-        });
-    })
-    
-    console.log(topicsArray)
-    dispatch({type:'FETCH_TOPICS', topics: topicsArray})
-}
+  dispatch({ type: "FETCH_TOPICS", topics: topicsArray });
+};

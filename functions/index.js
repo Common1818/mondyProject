@@ -1,4 +1,7 @@
 const functions = require("firebase-functions");
+const nodemailer = require("nodemailer");
+const gmailEmail = "marketingacad.help@gmail.com";
+const gmailPassword = "abcd9876";
 
 const admin = require("firebase-admin");
 admin.initializeApp();
@@ -108,4 +111,29 @@ exports.deleteUser = functions.https.onCall((uid) => {
       console.log(err);
       return { message: "Not Deleted !!! ERROR !!!" };
     });
+});
+
+exports.sendEmail = functions.https.onCall(async (data) => {
+  console.log("trying to send email");
+
+  const mailTransport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: gmailEmail,
+      pass: gmailPassword,
+    },
+  });
+  const mailOptions = {
+    from: '"Marketing Acad" <noreply@firebase.com>',
+    to: data.email,
+  };
+  mailOptions.subject = data.subject;
+  mailOptions.text = data.text;
+  try {
+    await mailTransport.sendMail(mailOptions);
+    return { message: "Email sent" };
+  } catch (error) {
+    console.error("There was an error while sending the email", error);
+    return { message: "Error sending email" };
+  }
 });

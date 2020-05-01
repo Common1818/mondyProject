@@ -1,33 +1,42 @@
+/* eslint-disable */
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Accordion, Button } from "react-bootstrap";
 import { signOut } from "../crudFunctions/authFunctions";
 import { AuthContext } from "../../contexts/authContext";
 import $ from "jquery";
-import { AdminContext } from "../../contexts/adminContext";
-import { isAdmin } from "../crudFunctions/adminFunctions";
 
 const SignedInLinks = (props) => {
   const [loggedOut, setLoggedOut] = useState(false);
-  const { dispatch } = useContext(AuthContext);
+  const { dispatch, isAdmin } = useContext(AuthContext);
+  // const [loginCode,setLoginCode] = useState(200)
+
+  useEffect(() => {
+    $(".hamBurg-cont button").click(function () {
+
+      $(".nav-icon1").toggleClass("open");
+      $("html, body").animate({ scrollTop: 410 }, 600);
+      
+    });
+  }, []);
 
   const handleSignout = (props) => {
     signOut(dispatch);
     setLoggedOut(true);
   };
 
-  if (loggedOut == true) {
+  if (loggedOut === true) {
     window.location.reload();
   }
 
-  const { adminData, dispatch2 } = useContext(AdminContext);
-  useEffect(() => {
-    isAdmin(dispatch2);
-  }, []);
+  // const { adminData, dispatch2 } = useContext(AdminContext);
+  // useEffect(() => {
+  //   isAdmin(dispatch2);
+  // }, []);
   return (
     <div>
       <div className="">
-        <Accordion className="" defaultActiveKey="13">
+        <Accordion className="" defaultActiveKey="">
           <div className="hamBurg-cont">
             <Accordion.Toggle
               as={Button}
@@ -35,7 +44,11 @@ const SignedInLinks = (props) => {
               variant="link"
               eventKey="13"
             >
-              <i className="fa fa-bars"></i>
+              <div className="nav-icon1">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse className="" eventKey="13">
@@ -57,11 +70,11 @@ const SignedInLinks = (props) => {
               </div>
 
               <div className="extra-links">
-                <a id="logout-btn" onClick={handleSignout}>
+                <a href="/" id="logout-btn" onClick={handleSignout}>
                   Logout
                 </a>
               </div>
-              {adminData.isAdmin ? (
+              {isAdmin ? (
                 <div className="extra-links">
                   <NavLink to="/adminpanel">
                     <i className="fas fa-tools"></i>

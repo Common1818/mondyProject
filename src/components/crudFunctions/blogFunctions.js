@@ -10,14 +10,12 @@ export const addArticleFunction = (props, dispatch) => {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
-      console.log("Article added");
       dispatch({
         type: "ADD_ARTICLE",
         errCode: 200,
       });
     })
     .catch((err) => {
-      console.log("error adding article");
       dispatch({
         type: "ADD_ARTICLE",
         errCode: 100,
@@ -74,8 +72,8 @@ export const getContent = async (dispatch) => {
       id: doc.id,
       ...doc.data(),
     });
+    return null;
   });
 
-  console.log(contentArray);
   dispatch({ type: "FETCH_BLOG_CONTENT", content: contentArray });
 };

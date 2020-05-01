@@ -12,12 +12,11 @@ const EditUspSlide = ({ content }) => {
   ]);
 
   const data = content && content[2].EditUspData;
-  console.log(data);
   const { dispatch } = useContext(HomeContext);
 
   const handledSubmit = (e) => {
     e.preventDefault();
-    console.log(EditUspData);
+
     EditUspSlideFunction({ EditUspData }, dispatch);
   };
 

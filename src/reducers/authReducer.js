@@ -5,6 +5,7 @@ export const authReducer = (state, action) => {
         ...state,
         loginCode: action.loginCode,
         errorMessage: action.errorMessage,
+        isReady: true,
       };
     case "LOGOUT":
       return {
@@ -24,5 +25,8 @@ export const authReducer = (state, action) => {
         ...state,
         ResetMessage: action.ResetMessage,
       };
+
+    default:
+      return state;
   }
 };

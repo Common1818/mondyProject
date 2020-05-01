@@ -20,7 +20,7 @@ const EditHomeVideo = ({ content }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(EditHomeVideo);
+
     EditHomeVideoFunction({ EditHomeVideo }, dispatch);
   };
   var status;

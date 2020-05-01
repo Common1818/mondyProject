@@ -12,9 +12,9 @@ export const getFooter = async (dispatch) => {
       id: doc.id,
       ...doc.data(),
     });
+    return null;
   });
 
-  console.log(footerArray);
   dispatch({ type: "FETCH_FOOTER", content: footerArray });
 };
 

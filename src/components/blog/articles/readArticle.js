@@ -1,12 +1,16 @@
+/* eslint-disable */
 import React, { useContext, useState } from "react";
-import { BlogContext } from "../../../contexts/blogContext";
 import { NavLink } from "react-router-dom";
-import "./css/readArticle.css";
-import "./css/quill.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Row, Col, Tooltip, OverlayTrigger, Button } from "react-bootstrap";
+
+import { BlogContext } from "../../../contexts/blogContext";
 import { deleteArticleFunction } from "../../crudFunctions/blogFunctions";
-import { AdminContext } from "../../../contexts/adminContext";
+import { AuthContext } from "../../../contexts/authContext";
+
+import $ from "jquery"
+import "./css/readArticle.css";
+import "./css/quill.css";
 
 const ReadArticle = (props) => {
   const { content, dispatch } = useContext(BlogContext);
@@ -14,11 +18,8 @@ const ReadArticle = (props) => {
   const data = content.content;
   const url = window.location.href;
   const [copied, setCopied] = useState(false);
-  const { adminData } = useContext(AdminContext);
-  console.log(props);
-  console.log(content);
-  console.log(ArticleId);
-  console.log(data);
+  const { isAdmin } = useContext(AuthContext);
+
   const handleDelete = () => {
     deleteArticleFunction(ArticleId, dispatch);
   };
@@ -33,14 +34,20 @@ const ReadArticle = (props) => {
     status = null;
   }
 
-  console.log(props.match.params.id);
+  const goToTop = ()=>{
+
+    $("html, body").animate({ scrollTop: 100 }, 600);
+  }
+
   return (
-    <div>
+    
       <div className="blog-article-container">
+
         {data &&
           data.map((article) => {
             if (article.id === ArticleId) {
               return (
+                <div>
                 <Row key={ArticleId} className="full-view-article p-2">
                   <div className="share-icons">
                     <OverlayTrigger
@@ -83,8 +90,8 @@ const ReadArticle = (props) => {
                           }&Body=Hey look i just found out this Amazing article on "${
                             article.heading
                           }",Check it out : ${url}`}
-                          target="_top"
-                        >
+                          target="_top">
+                          
                           <i className="fas fa-envelope"></i>
                         </a>
                       </div>
@@ -103,6 +110,7 @@ const ReadArticle = (props) => {
                           className="whatsapp-icon"
                           href={`https://api.whatsapp.com/send?text=Hey look i just found out this Amazing article on "${article.heading}",Check it out : ${url}`}
                           target="_blank"
+                          rel="noopener noreferrer nofollow"
                         >
                           <i className="fab fa-whatsapp"></i>
                         </a>
@@ -124,16 +132,17 @@ const ReadArticle = (props) => {
                         ></div>
                       </div>
 
-                      {adminData.isAdmin ? (
+                      {isAdmin ? (
                         <div className="up-del-buttons">
                           <NavLink
                             to={"/blog/article/" + ArticleId + "/update"}
-                          >
+                            rel="nofollow">
+
                             <Button
                               variant="outline-success"
                               className="update-button"
-                              type="link"
-                            >
+                              type="link">
+
                               Update
                             </Button>
                           </NavLink>
@@ -151,7 +160,7 @@ const ReadArticle = (props) => {
                       ) : null}
                     </div>
 
-                    <a href="#">
+                    <a onClick={goToTop} rel="nofollow">
                       <i
                         id="go-to-top"
                         className=" top-icon fas fa-angle-double-up"
@@ -161,11 +170,12 @@ const ReadArticle = (props) => {
 
                   <Col sm={2}></Col>
                 </Row>
+                </div>
               );
             }
+            return null;
           })}
       </div>
-    </div>
   );
 };
 

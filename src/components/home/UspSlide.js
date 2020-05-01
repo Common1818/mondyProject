@@ -8,7 +8,7 @@ import UspSvgThree from "./UspSVG's/uspSvg3";
 const UspSlide = ({ content }) => {
   const data = content && content[2];
   const EditUspData = data && data.EditUspData;
-  console.log(EditUspData);
+
   return (
     <div className="usp-container">
       <div className="usp-heading">

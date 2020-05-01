@@ -18,7 +18,7 @@ export const EditHomeVideoFunction = (props, dispatch) => {
   const firestore = firebase.firestore();
   firestore
     .collection("Home")
-    .doc("h1xSvs8t1tVqqFJV07Pk")
+    .doc("wSz6ns7kksIlOfeSpZLF")
     .update({ ...props })
     .then(() => {
       dispatch({ type: "EDIT_HOME_VIDEO", errorCode: 200 });
@@ -32,7 +32,7 @@ export const EditUspSlideFunction = (props, dispatch) => {
   const firestore = firebase.firestore();
   firestore
     .collection("Home")
-    .doc("QVkWidWBlbfO1MjVksBI")
+    .doc("s7zXiwfVkeatjQC6klDh")
     .update({ ...props })
     .then(() => {
       dispatch({ type: "EDIT_USP_SLIDE", errorCode: 200 });
@@ -44,9 +44,10 @@ export const EditUspSlideFunction = (props, dispatch) => {
 
 export const EditStatSlideFunction = (props, dispatch) => {
   const firestore = firebase.firestore();
+  console.log(props);
   firestore
     .collection("Home")
-    .doc("MUQAy1XGqeyL6VGqMgdY")
+    .doc("RTXIzY0ncPvT1Us4K1tD")
     .update({ ...props })
     .then(() => {
       dispatch({ type: "EDIT_STAT_SLIDE", errorCode: 200 });
@@ -68,8 +69,8 @@ export const getContent = async (dispatch) => {
       id: doc.id,
       ...doc.data(),
     });
+    return null;
   });
 
-  console.log(contentArray);
   dispatch({ type: "FETCH_HOME_CONTENT", content: contentArray });
 };

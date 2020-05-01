@@ -1,7 +1,6 @@
 export const blogReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ARTICLE":
-      console.log(action);
       return {
         ...state,
         errCode: action.errCode,
@@ -14,7 +13,6 @@ export const blogReducer = (state, action) => {
       };
 
     case "EDIT_BLOG_ARTICLE":
-      console.log(action);
       return {
         ...state,
         error: action.error,
@@ -22,7 +20,6 @@ export const blogReducer = (state, action) => {
       };
 
     case "DELETE_BLOG_ARTICLE":
-      console.log("Article Deleted");
       return {
         ...state,
         errCode: action.errCode,

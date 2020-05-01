@@ -1,5 +1,6 @@
 const firebase = require("firebase");
 var provider = new firebase.auth.GoogleAuthProvider();
+require("firebase/functions");
 
 export const getAuth = (dispatch) => {
   const uid = firebase.auth().currentUser && firebase.auth().currentUser.uid;
@@ -26,7 +27,6 @@ export const signIn = (email, password, dispatch) => {
         loginCode: 200,
         errorMessage: null,
       });
-      console.log("logged in successfully");
     })
     .catch((err) => {
       dispatch({
@@ -34,7 +34,7 @@ export const signIn = (email, password, dispatch) => {
         loginCode: 100,
         errorMessage: "Error Logging In",
       });
-      console.log("error logging in ");
+      return "problem";
     });
 };
 
@@ -61,6 +61,17 @@ export const signUp = (props, dispatch) => {
           displayName: props.firstName + " " + props.lastName,
         })
         .then(() => {
+          const functions = firebase.functions();
+          const sendEmail = functions.httpsCallable("sendEmail");
+          const data = {
+            email: props.email,
+            subject: "Hey There !!!",
+            text: "You are now signed up for Marketing Acad ",
+          };
+          sendEmail(data)
+            .then((res) => {})
+            .catch((err) => {});
+
           dispatch({
             type: "SIGN_UP",
             loginCode: 200,
@@ -82,7 +93,6 @@ export const signOut = (dispatch) => {
     .auth()
     .signOut()
     .then(() => {
-      console.log("logged out successfully");
       dispatch({
         type: "LOGOUT",
         loginCode: 100,
@@ -93,25 +103,37 @@ export const signOut = (dispatch) => {
         type: "LOGOUT",
         loginError: "Error Logging In",
       });
-      console.log(err, "error logging out ");
     });
 };
 
-export const LoginWithGoogle = () => {
+export const LoginWithGoogle = (dispatch) => {
   firebase
     .auth()
     .signInWithPopup(provider)
     .then(function (result) {
-      var token = result.credential.accessToken;
-      var user = result.user;
-      console.log("login success");
+      const functions = firebase.functions();
+      const sendEmail = functions.httpsCallable("sendEmail");
+      const data = {
+        email: result.user.email,
+        subject: "Hey There !!!",
+        text: "You are now Logged in to Marketing Acad ",
+      };
+      sendEmail(data)
+        .then((res) => {})
+        .catch((err) => {});
+
+      dispatch({
+        type: "LOGIN",
+        loginCode: 200,
+        errorMessage: null,
+      });
     })
     .catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var email = error.email;
-      var credential = error.credential;
-      console.log("login error");
+      dispatch({
+        type: "LOGIN",
+        loginCode: 100,
+        errorMessage: "Error Logging In",
+      });
     });
 };
 

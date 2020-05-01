@@ -1,0 +1,92 @@
+.verify-container {
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vh;
+    min-height: 70vh;
+    background-blend-mode: multiply;
+    background-color: #fff;
+    font-family: "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+}
+
+.verify-container h2 {
+    color: #111;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: Dosis;
+}
+
+.verify-container .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.verify-container i {
+    color: #ffbf00;
+}
+
+.searchbar {
+    float: right;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 6px 10px;
+    width: 180px;
+    border: none;
+    margin-top: 1px;
+    margin-right: 8px;
+    font-family: "Segoe UI Light", "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    border: #ffbf00 solid 2px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.searchbar::placeholder {
+    color: black;
+    font-family: "Segoe UI Light", "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    /* transition: 0.2s; */
+}
+
+.btn-search {
+    cursor: pointer;
+    color: white;
+    text-decoration: none !important;
+    font-family: "Segoe UI Light", "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 1.5em;
+    padding-top: 5px;
+    margin-right: 40px;
+}
+
+.search-result img {
+    width: 20%;
+}
+
+.search-result div {
+    text-align: center;
+    margin: 50px;
+}
+
+.search-result h3 {
+    font-family: Dosis;
+    font-size: 2.5rem;
+    color: #111;
+}
+
+@media only screen and (max-width: 450px) {
+    .search-result img {
+        width: 30%;
+    }
+    .search-result h3 {
+        font-family: Dosis;
+        font-size: 2rem;
+        /* color: #ffbf00; */
+    }
+}

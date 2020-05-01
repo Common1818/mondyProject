@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/liveStream.css";
+/* eslint-disable */
 /* eslint-disable no-unused-expressions */
 /*eslint-disable no-undef*/
 
@@ -726,7 +727,7 @@ class LiveStream extends React.Component {
     new Twitch.Embed("twitch-embed", {
       width: "100%",
       height: 480,
-      channel: "ESL_CSGO",
+      channel: "marketingacad",
       theme: "dark",
     });
   }

@@ -1,28 +1,48 @@
-import React, { useContext, useState, useEffect } from "react";
-import "./css/allCourses.css";
+import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { CardDeck, Button, Row, Col } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet";
+
 import { CourseContext } from "../../contexts/courseContext";
-import DisplayCourse from "./displayCourse";
 import { AdminContext } from "../../contexts/adminContext";
 
+import DisplayCourse from "./displayCourse";
+
+import "./css/allCourses.css";
+
 const _allCourses = () => {
+
   const { courses } = useContext(CourseContext);
-  console.log(courses.courses);
   const { adminData } = useContext(AdminContext);
-  // console.log(courses)
+
   var status;
+
   if (useContext(CourseContext).courses.errorCode === 300) {
     status = { text: "Error Deleting ", class: "text-danger" };
   }
+
   if (useContext(CourseContext).courses.errorCode === 400) {
     status = { text: "Deleted Successfully", class: "text-success" };
   } else {
     status = null;
   }
 
+  let descriptionString = "";
+  
+   courses.courses && courses.courses.map(item=>{
+   
+    descriptionString = descriptionString.concat((item.courseName).toString());
+    return descriptionString
+    
+  })
+
   return courses.courses != null ? (
     <div className="course-home-container">
+
+      <Helmet>
+        <meta name="description" content={descriptionString}/>
+      </Helmet>
+
       {adminData.isAdmin ? (
         <div className="Add-course-card">
           <NavLink to="courses/add">
@@ -40,7 +60,9 @@ const _allCourses = () => {
       </Row>
     </div>
   ) : (
-    <div>Loading...</div>
+    <div>
+      Loading...
+    </div>
   );
 };
 

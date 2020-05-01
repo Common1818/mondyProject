@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useContext } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import { updateFooterFunction } from "../../crudFunctions/footerFunctions";
@@ -15,7 +16,7 @@ const EditFooterAbout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ about });
+
     updateFooterFunction({ about }, dispatch, "About", "Footer");
   };
   var status;

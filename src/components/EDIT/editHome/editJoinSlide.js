@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Image } from "react-bootstrap";
+// import { Image } from "react-bootstrap";
 import "./css/editJoinSlide.css";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { EditStatSlideFunction } from "../../crudFunctions/homePageFunctions";

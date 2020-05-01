@@ -27,7 +27,7 @@ const UserTable = ({ users }) => {
             {users &&
               users.map((user) => {
                 return (
-                  <tr>
+                  <tr key={user.email}>
                     <td>{users.indexOf(user) + 1}</td>
                     <td>{user.displayName}</td>
                     <td>{user.email}</td>
@@ -39,7 +39,6 @@ const UserTable = ({ users }) => {
                               "deleteUser"
                             );
                             deleteUser(user.uid).then((res) => {
-                              console.log(res);
                               setMessage(
                                 ` User ${user.displayName} was ${res.data.message}`
                               );
@@ -55,7 +54,6 @@ const UserTable = ({ users }) => {
                               "unblockUser"
                             );
                             unblockUser(user.uid).then((res) => {
-                              console.log(res);
                               setMessage(
                                 ` User ${user.displayName} was ${res.data.message}`
                               );
@@ -71,7 +69,6 @@ const UserTable = ({ users }) => {
                               "blockUser"
                             );
                             blockUser(user.uid).then((res) => {
-                              console.log(res);
                               setMessage(
                                 ` User ${user.displayName} was ${res.data.message}`
                               );

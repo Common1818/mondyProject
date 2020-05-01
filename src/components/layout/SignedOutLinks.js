@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Accordion, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import $ from "jquery";
 
 const SignedOutLinks = () => {
+  useEffect(() => {
+    $(".hamBurg-cont button").click(function () {
+      $(".nav-icon1").toggleClass("open");
+
+      $("html, body").animate({ scrollTop: 410 }, 600);
+    });
+  }, []);
+
   return (
     <div>
       <div className="">
-        <Accordion className="" defaultActiveKey="13">
+        <Accordion className="" defaultActiveKey="">
           <div className="hamBurg-cont">
             <Accordion.Toggle
               as={Button}
@@ -14,7 +23,11 @@ const SignedOutLinks = () => {
               variant="link"
               eventKey="13"
             >
-              <i className="fa fa-bars"></i>
+              <div className="nav-icon1">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse className="" eventKey="13">

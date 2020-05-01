@@ -66,9 +66,9 @@ export const getCourses = async (dispatch) => {
       id: doc.id,
       ...doc.data(),
     });
+    return null;
   });
 
-  console.log(coursesArray);
   dispatch({ type: "FETCH_COURSES", courses: coursesArray });
 };
 

@@ -3,14 +3,14 @@ import "firebase/firestore";
 import "firebase/auth";
 
 export const fbConfig = {
-    apiKey: "AIzaSyB5g47Gm9K7GZpUa4x4tJmzaNIn2miVKIg",
-    authDomain: "mondy-s-project.firebaseapp.com",
-    databaseURL: "https://mondy-s-project.firebaseio.com",
-    projectId: "mondy-s-project",
-    storageBucket: "mondy-s-project.appspot.com",
-    messagingSenderId: "306036602303",
-    appId: "1:306036602303:web:557544cecfe5f6db11dd0a",
-    measurementId: "G-YW25RXL11P"
+  apiKey: "AIzaSyDqJgq3-TALBNuCZ4SR3pTRpag-R6ejCIk",
+  authDomain: "marketing-acad.firebaseapp.com",
+  databaseURL: "https://marketing-acad.firebaseio.com",
+  projectId: "marketing-acad",
+  storageBucket: "marketing-acad.appspot.com",
+  messagingSenderId: "607982466429",
+  appId: "1:607982466429:web:5a8597e4921182b7958814",
+  measurementId: "G-6PGN4YY9NL",
 };
 // Initialize Firebase
 firebase.initializeApp(fbConfig);

@@ -5,6 +5,7 @@ import { getContent } from "../components/crudFunctions/homePageFunctions";
 export const HomeContext = createContext();
 const initState = {
   error: null,
+  isReady: false,
 };
 
 const HomeContextProvider = (props) => {

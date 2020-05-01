@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 const LatestArticle = ({ content }) => {
@@ -8,7 +8,7 @@ const LatestArticle = ({ content }) => {
   return (
     <div className="grid__item-lg">
       <NavLink to={"/blog/article/" + ArticleId + "/read"}>
-        <img src={data && data.thumbnail} className="grid__item__img" />
+        <img alt="" src={data && data.thumbnail} className="grid__item__img" />
         <p className="grid__item__category">{timeAdded}</p>
         <h4 className="grid__item__title">{data && data.heading}</h4>
         <p className="grid__item__author">By {data && data.authorName}</p>

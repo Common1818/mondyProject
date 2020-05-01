@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import "./css/signUp.css";
 import { NavLink, Redirect } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
-import { signUp } from "../crudFunctions/authFunctions";
+import { signUp, LoginWithGoogle } from "../crudFunctions/authFunctions";
 import { AuthContext } from "../../contexts/authContext";
+import $ from "jquery";
 
 const SignUp = () => {
   const { authData, dispatch } = useContext(AuthContext);
@@ -11,10 +12,17 @@ const SignUp = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleLoginWithGoogle = (e) => {
+    e.preventDefault();
+    LoginWithGoogle(dispatch);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ firstName, lastName, email, password });
+    $(".spinner").css("display", "block");
+    setLoading(true);
     signUp({ firstName, lastName, email, password }, dispatch);
   };
   var status = authData.errorMessage;
@@ -26,7 +34,7 @@ const SignUp = () => {
         <div className="logo">
           <img src="https://www.svgrepo.com/show/154629/big-owl.svg" alt="" />
         </div>
-        <div className="title">Sign Up For Khola Academy</div>
+        <div className="title">Sign Up For Martketing Acad</div>
 
         <form onSubmit={handleSubmit}>
           <div className="fields">
@@ -104,6 +112,13 @@ const SignUp = () => {
           <button type="submit" className="signin-button">
             <div className="center">Sign Up</div>
           </button>
+          {loading ? (
+            <div className=" spinner text-center">
+              <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner>
+            </div>
+          ) : null}
           <div className="text-danger">{status}</div>
           <div className="link">
             Already a Member ?
@@ -112,7 +127,10 @@ const SignUp = () => {
             </NavLink>{" "}
             or
           </div>
-          <button className="signin-button signin-with-google">
+          <button
+            onClick={handleLoginWithGoogle}
+            className="signin-button signin-with-google"
+          >
             <div className="center">
               Continue With{" "}
               <img

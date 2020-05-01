@@ -1,7 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Pagination } from "react-bootstrap";
-import { AdminContext } from "../../../contexts/adminContext";
 
 const AllArticles = ({ content }) => {
   const newContent = content && content.slice(1);
@@ -14,7 +12,11 @@ const AllArticles = ({ content }) => {
           return (
             <div className="grid__item-md" key={ArticleId}>
               <NavLink to={"/blog/article/" + ArticleId + "/read"}>
-                <img src={data && data.thumbnail} className="grid__item__img" />
+                <img
+                  alt=""
+                  src={data && data.thumbnail}
+                  className="grid__item__img"
+                />
                 <p className="grid__item__category">
                   {" "}
                   {data && data.timestamp.toDate().toDateString()}

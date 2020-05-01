@@ -1,0 +1,96 @@
+.hidden-fields {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.certificate-form-container {
+    font-family: 'Dosis', 'Arial', sans-serif;
+    font-size: 18px;
+}
+
+.certificate-form-container {
+    position: relative;
+    width: 80%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.certificate-form-container form {
+    position: relative;
+    width: 100%;
+    margin: 50px auto;
+    padding: 50px;
+    background: white;
+    text-align: center;
+}
+
+.certificate-form-container input {
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px dashed lightblue;
+    outline: none;
+    font-size: 20px;
+    font-family: 'Dosis', 'Arial', sans-serif;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.certificate-form-container input:focus {
+    border-color: deepskyblue;
+}
+
+.certificate-form-container button {
+    margin: 20px;
+    text-align: center;
+    margin: 0px auto 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    color: white;
+    font-family: 'Dosis', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background: mediumblue;
+    transition: all 0.2s ease;
+}
+
+.certificate-form-container button:hover {
+    background: midnightblue;
+}
+
+.certificate-form-container button.valid,
+.certificate-form-container button.valid:hover {
+    background: mediumseagreen;
+}
+
+.certificate-form-container svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.certificate-form-container svg path {
+    stroke-width: 10px;
+    stroke: mediumseagreen;
+    fill: none;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.certificate-form-container svg path.hidden {
+    opacity: 0;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+}

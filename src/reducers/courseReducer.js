@@ -6,14 +6,12 @@ export const courseReducer = (state, action) => {
         errorCode: action.errorCode,
       };
     case "FETCH_COURSES":
-      console.log(action.courses);
       return {
         ...state,
         courses: action.courses,
       };
 
     case "EDIT_COURSE":
-      console.log(action);
       return {
         ...state,
         error: action.error,

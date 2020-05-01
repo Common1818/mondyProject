@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Image } from "react-bootstrap";
 import "./css/join-slide.css";
 import { Row, Col, Button } from "react-bootstrap";
 

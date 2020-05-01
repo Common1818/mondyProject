@@ -1,5 +1,9 @@
 /* Master new skills */
 
+html {
+    overflow-x: hidden !important;
+}
+
 .home-content {
     background-color: #f1f1f1;
 }
@@ -8,7 +12,7 @@
 /* Choose from many fast paced courses */
 
 .course-preview-heading {
-    font-family: 'Dosis', sans-serif;
+    font-family: "Dosis", sans-serif;
     text-align: center;
     background: #f1f1f1;
     padding-top: 40px;

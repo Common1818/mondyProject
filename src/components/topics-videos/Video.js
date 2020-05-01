@@ -1,28 +1,30 @@
 import React, { Fragment } from "react";
 import ReactPlayer from "react-player";
+import { Card } from "react-bootstrap";
+import "./css/video.css";
 
 const video = (props) => {
   const { selectedVideo } = props;
-  console.log(selectedVideo);
 
   return (
     <Fragment>
-      <div className="ml-5 bg-light pr-5">
-        <h2 className="text-center pt-2">
-          <b>Video</b>
-        </h2>
-        <h4 className="ml-5 pt-3 mb-3">
-          <b>{selectedVideo.videoName}</b>
-        </h4>
-        <div className="ml-5 m-2">
+      <div className="selected-video-container">
+        <Card style={{ width: "100%" }}>
           <ReactPlayer
+            className="selected-video"
             url={selectedVideo.videoUrl}
             playing={false}
             controls={true}
           />
-        </div>
-        <h4 className="ml-5">Description</h4>
-        <div className="ml-5 mt-2 pb-5">{selectedVideo.videoDescription}</div>
+          <Card.Body>
+            <Card.Title> {selectedVideo.videoName}</Card.Title>
+            <Card.Text as="div">
+              <div className="video-description">
+                <span>{selectedVideo.videoDescription}</span>
+              </div>
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </div>
     </Fragment>
   );

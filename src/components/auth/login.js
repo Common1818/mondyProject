@@ -1,31 +1,38 @@
 import React, { useState, useContext } from "react";
+import { Spinner } from "react-bootstrap";
 import "./css/loginForm.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { signIn, LoginWithGoogle } from "../crudFunctions/authFunctions";
-import firebase, { fbConfig } from "../../config/fbConfig";
 import { AuthContext } from "../../contexts/authContext";
+import $ from "jquery";
 const LoginForm = () => {
-  const { authData, dispatch } = useContext(AuthContext);
-  console.log(authData);
 
+  const { authData, dispatch } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
-    console.log({ email, password });
+    $(".spinner").css("display", "block");
+    setLoading(true);
     await signIn(email, password, dispatch);
   };
 
   const handleLoginWithGoogle = (e) => {
     e.preventDefault();
-    LoginWithGoogle();
+    LoginWithGoogle(dispatch);
   };
 
-  const loginCode = useContext(AuthContext).authData.loginCode;
+  // const loginCode = useContext(AuthContext).authData.loginCode;
   const status = useContext(AuthContext).authData.errorMessage;
-  console.log(status);
+
   if (authData.loginCode === 200) return <Redirect to="/" />;
+  if (authData.loginCode === 100) {
+    // window.location.reload();
+    $(".spinner").css("display", "none");
+  }
 
   return (
     <div className="login-form-container">
@@ -76,12 +83,20 @@ const LoginForm = () => {
             <div className="center">LOGIN</div>
           </button>
 
+          {loading ? (
+            <div className=" spinner text-center">
+              <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner>
+            </div>
+          ) : null}
+
           <div className="text-danger">{status}</div>
           <div className="link">
             <NavLink to="/login/forget">Forgot password?</NavLink> or{" "}
             <NavLink className="text-primary" to="/signup">
               Sign up
-            </NavLink>{" "}
+            </NavLink>
             or
           </div>
         </form>

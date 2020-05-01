@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import "./css/adminPanel.css";
 import { Button } from "react-bootstrap";
 import MakeAdminForm from "./makeAdminForm";
-import { AdminContext } from "../../contexts/adminContext";
 import UserTable from "./userTable";
+import { AuthContext } from "../../contexts/authContext";
 
 const firebase = require("firebase");
 require("firebase/functions");
 
 const AdminPanel = () => {
-  const { adminData } = useContext(AdminContext);
+  const { isAdmin } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
   // Function to display all users
@@ -25,7 +25,7 @@ const AdminPanel = () => {
 
   return (
     <div>
-      {adminData.isAdmin ? (
+      {isAdmin ? (
         <div className="adminpanel-container">
           <div className="make-admin-form">
             <MakeAdminForm />

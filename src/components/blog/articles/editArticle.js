@@ -4,10 +4,10 @@ import { Form, Button } from "react-bootstrap";
 import { BlogContext } from "../../../contexts/blogContext";
 import { updateArticleFunction } from "../../crudFunctions/blogFunctions";
 import Editor from "../../editor/editor";
-import { AdminContext } from "../../../contexts/adminContext";
+import { AuthContext } from "../../../contexts/authContext";
 
 const EditArticle = (props) => {
-  const { adminData } = useContext(AdminContext);
+  const { isAdmin } = useContext(AuthContext);
   const ArticleId = props.match.params.id;
   const data = useContext(BlogContext).content.content;
   const { dispatch } = useContext(BlogContext);
@@ -17,6 +17,7 @@ const EditArticle = (props) => {
       if (article.id === ArticleId) {
         selectedArticle = article;
       }
+      return null;
     });
 
   const isFeatured = selectedArticle && selectedArticle.featured;
@@ -33,8 +34,6 @@ const EditArticle = (props) => {
       dispatch,
       ArticleId
     );
-
-    console.log({ authorName, heading, content, thumbnail, featured });
   };
   const [heading, setHeading] = useState("");
   const [content, setContent] = useState("");
@@ -45,12 +44,6 @@ const EditArticle = (props) => {
     setContent(html);
   };
 
-  console.log(featured);
-
-  console.log(ArticleId);
-  console.log(selectedArticle);
-
-  console.log(useContext(BlogContext).content.error);
   var status;
   if (useContext(BlogContext).content.errorCode === 100) {
     status = { text: "Error updating article", class: "text-danger" };
@@ -63,7 +56,7 @@ const EditArticle = (props) => {
 
   return (
     <div>
-      {adminData.isAdmin ? (
+      {isAdmin ? (
         <div className="edit-article-container bg-light p-4">
           <h2>Edit Article</h2>
           <Form onSubmit={handleSubmit}>
@@ -84,10 +77,10 @@ const EditArticle = (props) => {
             )}
             <Form.Check
               onChange={(e) => {
-                if (featured == false) {
+                if (featured === false) {
                   setFeatured(true);
                 }
-                if (featured == true) {
+                if (featured === true) {
                   setFeatured(false);
                 }
               }}

@@ -11,6 +11,7 @@ import BlogContextProvider from "./contexts/blogContext";
 import FooterContextProvider from "./contexts/footerContext";
 import AuthContextProvider from "./contexts/authContext";
 import AdminContextProvider from "./contexts/adminContext";
+import CertificateContextProvider from "./contexts/certificateContext";
 //
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -43,9 +44,18 @@ import AdminPanel from "./components/adminPanel/adminPanel";
 // LiveStream
 import LiveStream from "./components/liveStream/liveStream";
 import ForgotPassword from "./components/auth/forgotPassword";
+import Certificate from "./components/certificate/certificate";
+import VerifyCertificate from "./components/certificate/verifyCertificate";
+
 //
 
+// import firebase from "./config/fbConfig";
+
 class App extends Component {
+  state = {
+    isLoaded: false,
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -116,6 +126,20 @@ class App extends Component {
                             path="/login/forget"
                             component={ForgotPassword}
                           />
+
+                          <Route
+                            exact
+                            path="/certificate/:id"
+                            component={Certificate}
+                          />
+
+                          <CertificateContextProvider>
+                            <Route
+                              exact
+                              path="/verifycertificate"
+                              component={VerifyCertificate}
+                            />
+                          </CertificateContextProvider>
 
                           <FooterContextProvider>
                             <Footer />

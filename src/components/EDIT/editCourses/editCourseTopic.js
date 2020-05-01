@@ -6,7 +6,7 @@ import { updateCourseFunction } from "../../crudFunctions/coursesFunctions";
 
 const EditCourseTopic = (props) => {
   const { dispatch } = useContext(CourseContext);
-  console.log(props);
+
   const topicId = props.topic.id;
 
   const [show, setShow] = useState(false);
@@ -17,7 +17,6 @@ const EditCourseTopic = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateCourseFunction({ topicName }, dispatch, topicId, "Topics");
-    console.log({ topicName });
   };
   var status;
   if (useContext(CourseContext).courses.errorCode === 100) {
@@ -39,7 +38,6 @@ const EditCourseTopic = (props) => {
 
       <Modal
         centered
-        animation
         show={show}
         onHide={handleClose}
         animation={true}

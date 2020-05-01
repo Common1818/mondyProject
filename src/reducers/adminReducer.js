@@ -1,7 +1,6 @@
 export const adminReducer = (state, action) => {
   switch (action.type) {
     case "CHECKING_ADMIN":
-      console.log("checking admin");
       return {
         ...state,
         isAdmin: action.isAdmin,
@@ -11,6 +10,8 @@ export const adminReducer = (state, action) => {
         ...state,
         err: "error making admin",
       };
+    default:
+      return state;
 
     // case "DISPLAY_ADMIN_MESSAGE":
     //   return {

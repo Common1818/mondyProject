@@ -6,12 +6,9 @@ import { updateCourseFunction } from "../../crudFunctions/coursesFunctions";
 
 const EditVideoTopic = (props) => {
   const { dispatch } = useContext(CourseContext);
-  console.log(props);
-  //   const topicId = props.topic.id;
+
   const { video } = props;
   const videoId = video.id;
-
-  console.log(video);
 
   const [show, setShow] = useState(false);
   const [videoName, setVideoName] = useState("");
@@ -22,7 +19,6 @@ const EditVideoTopic = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ videoName, videoDescription, videoUrl });
 
     updateCourseFunction(
       { videoName, videoDescription, videoUrl },
@@ -51,7 +47,6 @@ const EditVideoTopic = (props) => {
 
       <Modal
         centered
-        animation
         show={show}
         onHide={handleClose}
         animation={true}

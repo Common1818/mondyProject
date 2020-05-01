@@ -14,6 +14,7 @@ const HomeVideoModal = ({ data }) => {
 
       <Modal show={show} centered size="xl" onHide={handleClose}>
         <iframe
+          title="Home Video"
           className="home-video-modal"
           src={data && data.thumbnailUrl}
           frameBorder="0"

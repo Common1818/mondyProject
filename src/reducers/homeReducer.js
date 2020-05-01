@@ -1,10 +1,10 @@
 export const homeReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_HOME_CONTENT":
-      console.log(action.content);
       return {
         ...state,
         content: action.content,
+        isReady: true,
       };
 
     case "EDIT_CAROUSEL":
@@ -26,7 +26,6 @@ export const homeReducer = (state, action) => {
         errorCode: action.errorCode,
       };
     case "EDIT_STAT_SLIDE":
-      console.log(state);
       return {
         ...state,
 

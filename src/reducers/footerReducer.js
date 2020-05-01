@@ -7,7 +7,6 @@ export const footerReducer = (state, action) => {
       };
 
     case "EDIT_FOOTER":
-      console.log(action);
       return {
         ...state,
         errorCode: action.errorCode,
